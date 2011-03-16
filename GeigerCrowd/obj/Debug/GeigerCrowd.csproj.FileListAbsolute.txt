@@ -1,0 +1,6 @@
+c:\users\nikkie\documents\visual studio 2010\Projects\GeigerCrowd\GeigerCrowd\bin\GeigerCrowd.dll
+c:\users\nikkie\documents\visual studio 2010\Projects\GeigerCrowd\GeigerCrowd\bin\GeigerCrowd.pdb
+c:\users\nikkie\documents\visual studio 2010\Projects\GeigerCrowd\GeigerCrowd\obj\Debug\ResolveAssemblyReference.cache
+c:\users\nikkie\documents\visual studio 2010\Projects\GeigerCrowd\GeigerCrowd\obj\Debug\GeigerCrowd.dll
+c:\users\nikkie\documents\visual studio 2010\Projects\GeigerCrowd\GeigerCrowd\obj\Debug\GeigerCrowd.pdb
+c:\users\nikkie\documents\visual studio 2010\Projects\GeigerCrowd\GeigerCrowd\bin\EntityFramework.dll
