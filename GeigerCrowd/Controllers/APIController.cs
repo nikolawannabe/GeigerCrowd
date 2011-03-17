@@ -18,7 +18,7 @@ namespace GeigerCrowd.Controllers
         public JsonResult getAllReadings()
         {
             List<ReadingPoint> readingPoints = context.ReadingPoints.ToList();
-            return Json(readingPoints);
+            return Json(readingPoints,JsonRequestBehavior.AllowGet);
         }
 
     }

@@ -80,6 +80,8 @@
     <Content Include="Content\images\bullet_orange.png" />
     <Content Include="Content\images\bullet_red.png" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\api\api.readingpoints.js" />
+    <Content Include="Scripts\api\api.shared.js" />
     <Content Include="Scripts\pages\DefaultMap.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">

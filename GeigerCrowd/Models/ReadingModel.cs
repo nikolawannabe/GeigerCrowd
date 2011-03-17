@@ -14,9 +14,11 @@ namespace GeigerCrowd.Models
     {
         public int ID  {get; set; }
         [Required]
+        [Display(Name = "Date")]
         public DateTime Date { get; set; }
 
         [Required]
+        [Display(Name = "Reading, in mSv")]
         public double Reading
         {
             get;
@@ -24,6 +26,7 @@ namespace GeigerCrowd.Models
         }
 
         [Required]
+        [Display(Name = "Latitude")]
         public double Latitude
         {
             get;
@@ -31,6 +34,7 @@ namespace GeigerCrowd.Models
         }
 
         [Required]
+        [Display(Name = "Longitude")]
         public double Longitude
         {
             get;
