@@ -10,8 +10,9 @@ namespace GeigerCrowd.Models
     public class GeigerCrowdContext : DbContext
     {
         public DbSet<GeigerCrowd.Models.ReadingPoint> ReadingPoints { get; set; }
-    
+
         public GeigerCrowdContext()
+            : base("GeigerCrowd")
         {
             // Instructions:
             //  * You can add custom code to this file. Changes will *not* be lost when you re-run the scaffolder.
