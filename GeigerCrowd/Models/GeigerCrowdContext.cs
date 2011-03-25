@@ -19,7 +19,7 @@ namespace GeigerCrowd.Models
             //  * If you want Entity Framework to drop and regenerate your database automatically whenever you 
             //    change your model schema, uncomment the following line:
 			  // DbDatabase.SetInitializer(new DropCreateDatabaseIfModelChanges<GeigerCrowdContext>());
-            Database.SetInitializer(new DropCreateDatabaseAlways<GeigerCrowdContext>());
+            //Database.SetInitializer(new DropCreateDatabaseAlways<GeigerCrowdContext>());
         }
     }
 }
