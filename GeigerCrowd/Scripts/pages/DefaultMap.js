@@ -1,5 +1,5 @@
 ﻿function initialize() {
-    var myLatlng = new google.maps.LatLng(-25.363882, 131.044922);
+    var myLatlng = new google.maps.LatLng(36.288563, 138.427734,5);
     var myOptions = {
         zoom: 4,
         center: myLatlng,
@@ -43,8 +43,6 @@
                     infowindow.open(map, beachMarker);
                 });
             }
-            var message = 'Loaded ' + result.length + ' measurements.';
-            alert(message);
         }
     });
 

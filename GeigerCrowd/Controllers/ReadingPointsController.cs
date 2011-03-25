@@ -15,7 +15,7 @@ namespace GeigerCrowd.Controllers
 
         //
         // GET: /ReadingPoint/
-
+        [Authorize]
         public ViewResult Index()
         {
             return View(context.ReadingPoints.ToList());
@@ -23,7 +23,7 @@ namespace GeigerCrowd.Controllers
 
         //
         // GET: /ReadingPoint/Details/5
-
+        [Authorize]
         public ViewResult Details(int id)
         {
 			ReadingPoint readingpoint = context.ReadingPoints.Single(x => x.ID == id);
@@ -32,7 +32,7 @@ namespace GeigerCrowd.Controllers
 
         //
         // GET: /ReadingPoint/Create
-
+        [Authorize]
         public ActionResult Create()
         {
             return View();
@@ -42,6 +42,7 @@ namespace GeigerCrowd.Controllers
         // POST: /ReadingPoint/Create
 
         [HttpPost]
+        [Authorize]
         public ActionResult Create(ReadingPoint readingpoint)
         {
             if (ModelState.IsValid)
@@ -56,7 +57,7 @@ namespace GeigerCrowd.Controllers
         
         //
         // GET: /ReadingPoint/Edit/5
- 
+        [Authorize]
         public ActionResult Edit(int id)
         {
 			ReadingPoint readingpoint = context.ReadingPoints.Single(x => x.ID == id);
@@ -67,6 +68,7 @@ namespace GeigerCrowd.Controllers
         // POST: /ReadingPoint/Edit/5
 
         [HttpPost]
+        [Authorize]
         public ActionResult Edit(ReadingPoint readingpoint)
         {
             if (ModelState.IsValid)
@@ -80,7 +82,8 @@ namespace GeigerCrowd.Controllers
 
         //
         // GET: /ReadingPoint/Delete/5
- 
+
+        [Authorize]
         public ActionResult Delete(int id)
         {
 			ReadingPoint readingpoint = context.ReadingPoints.Single(x => x.ID == id);
@@ -91,6 +94,7 @@ namespace GeigerCrowd.Controllers
         // POST: /ReadingPoint/Delete/5
 
         [HttpPost, ActionName("Delete")]
+        [Authorize]
         public ActionResult DeleteConfirmed(int id)
         {
             ReadingPoint readingpoint = context.ReadingPoints.Single(x => x.ID == id);
