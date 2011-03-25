@@ -57,7 +57,7 @@ namespace GeigerCrowd.Models
         {
         }
 
-        public int UserId
+        public string UserId
         {
             get;
             set;

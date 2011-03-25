@@ -1,5 +1,7 @@
 @model GeigerCrowd.Models.ReadingPoint
-
+@{
+    string userid = @ViewBag.UserID.ToString();
+}
 @* This partial view defines form fields that will appear when creating and editing entities *@
 
 <div class="editor-label">
@@ -39,4 +41,4 @@
     @Html.EditorFor(model => model.Longitude)
     @Html.ValidationMessageFor(model => model.Longitude)
 </div>
-    @Html.Hidden("model.UserId",0)
+    @Html.Hidden("model.UserId",@userid)

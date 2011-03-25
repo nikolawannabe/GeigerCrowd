@@ -35,6 +35,7 @@ namespace GeigerCrowd.Controllers
         [Authorize]
         public ActionResult Create()
         {
+            @ViewBag.UserID = this.Request.LogonUserIdentity.User;
             return View();
         } 
 
@@ -45,6 +46,7 @@ namespace GeigerCrowd.Controllers
         [Authorize]
         public ActionResult Create(ReadingPoint readingpoint)
         {
+            @ViewBag.UserID = this.Request.LogonUserIdentity.User;
             if (ModelState.IsValid)
             {
 				context.ReadingPoints.Add(readingpoint);
@@ -60,6 +62,7 @@ namespace GeigerCrowd.Controllers
         [Authorize]
         public ActionResult Edit(int id)
         {
+            @ViewBag.UserID = this.Request.LogonUserIdentity.User;
 			ReadingPoint readingpoint = context.ReadingPoints.Single(x => x.ID == id);
 			return View(readingpoint);
         }

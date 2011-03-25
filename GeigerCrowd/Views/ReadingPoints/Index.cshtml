@@ -24,9 +24,6 @@
         <th>
             Longitude
         </th>
-        <th>
-            UserId
-        </th>
     </tr>
 
 @foreach (var item in Model) {
@@ -47,9 +44,6 @@
         </td>
         <td>
 			@String.Format("{0:0.000000}", item.Longitude)
-        </td>
-        <td>
-			@item.UserId
         </td>
     </tr>
 }
