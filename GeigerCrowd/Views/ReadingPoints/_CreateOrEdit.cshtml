@@ -6,9 +6,15 @@
     @Html.LabelFor(model => model.Date)
 </div>
 <div class="editor-field">
-    @Html.EditorFor(model => model.Date)
+    @Html.EditorFor(model => model.Date, new { @class = "date" })
     @Html.ValidationMessageFor(model => model.Date)
 </div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.date').datepicker({ dateFormat: "dd/mm/yy" });
+    });
+</script>
 
 <div class="editor-label">
     @Html.LabelFor(model => model.Reading)
@@ -33,4 +39,4 @@
     @Html.EditorFor(model => model.Longitude)
     @Html.ValidationMessageFor(model => model.Longitude)
 </div>
-
+    @Html.Hidden("model.UserId",0)

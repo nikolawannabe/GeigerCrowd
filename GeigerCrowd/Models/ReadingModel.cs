@@ -27,6 +27,8 @@ namespace GeigerCrowd.Models
 
         [Required]
         [Display(Name = "Latitude")]
+        [Range(-90, 90)]
+        [DisplayFormat(DataFormatString = "{0:D6}")]
         public double Latitude
         {
             get;
@@ -35,6 +37,8 @@ namespace GeigerCrowd.Models
 
         [Required]
         [Display(Name = "Longitude")]
+        [Range(-180, 180)]
+        [DisplayFormat(DataFormatString = "{0:D6}")]
         public double Longitude
         {
             get;
@@ -51,6 +55,12 @@ namespace GeigerCrowd.Models
 
         public ReadingPoint()
         {
+        }
+
+        public int UserId
+        {
+            get;
+            set;
         }
     }
 

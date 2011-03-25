@@ -1,7 +1,7 @@
 @model IEnumerable<GeigerCrowd.Models.ReadingPoint>
 
 @{
-    ViewBag.Title = "Add Readings";
+    ViewBag.Title = "Index";
 }
 
 <h2>Index</h2>
@@ -24,6 +24,9 @@
         <th>
             Longitude
         </th>
+        <th>
+            UserId
+        </th>
     </tr>
 
 @foreach (var item in Model) {
@@ -40,10 +43,13 @@
 			@String.Format("{0:F}", item.Reading)
         </td>
         <td>
-			@String.Format("{0:F}", item.Latitude)
+			@String.Format("{0:0.000000}", item.Latitude)
         </td>
         <td>
-			@String.Format("{0:F}", item.Longitude)
+			@String.Format("{0:0.000000}", item.Longitude)
+        </td>
+        <td>
+			@item.UserId
         </td>
     </tr>
 }

@@ -4,11 +4,12 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using System.Data.Entity;
+using GeigerCrowd.Models;
+
 
 namespace GeigerCrowd
 {
-    // Note: For instructions on enabling IIS6 or IIS7 classic mode, 
-    // visit http://go.microsoft.com/?LinkId=9394801
 
     public class MvcApplication : System.Web.HttpApplication
     {
@@ -26,6 +27,7 @@ namespace GeigerCrowd
 
         protected void Application_Start()
         {
+            //Database.SetInitializer(new GeigerCrowdContext.DatabaseInitializer());
             AreaRegistration.RegisterAllAreas();
 
             //RegisterGlobalFilters(GlobalFilters.Filters);
