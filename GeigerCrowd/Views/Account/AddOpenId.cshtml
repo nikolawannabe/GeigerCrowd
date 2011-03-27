@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "AddOpenId";
+    Layout = "~/Views/Shared/_iframe.cshtml";
+}
+
+<form action="AddOpenId" method=post>
+
+<fieldset>
+<legend>Add OpenID Accounts</legend>
+@if (ViewBag.Message != null)
+{
+    <div style="color: #4D4D4D; border: 1px solid #92B8DE;">
+    @ViewBag.Message
+    </div>
+}
+<div class="editor-field">
+@Html.Label("OpenId URL")<br />
+<input id="openid_identifier" type="text" name="openid_identifier"/>
+</div>
+<input type="submit" value="Register" />
+</fieldset>
+</form>

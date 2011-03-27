@@ -1,0 +1,17 @@
+﻿@{
+    ViewBag.Title = "Profile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    List<string> urls = @ViewBag.URLs;
+}
+
+<h2>Profile</h2>
+
+<ul>
+@foreach (String s in urls)
+{
+    <li>@s</li>
+}
+</ul>
+<iframe src="AddOpenId" width="500" style="border: 0px;"></iframe>
+
+@Html.Partial("ChangePassword")
