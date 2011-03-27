@@ -14,6 +14,13 @@
 
 @Html.ValidationSummary(true, "Login was unsuccessful. Please correct the errors and try again.")
 
+
+    <form action="Authenticate?ReturnUrl=@this.Url.RequestContext.RouteData.Values["ReturnUrl"]" method="post">
+	<div>OpenID</div>
+	<input id="openid_identifier" name="openid_identifier" size="40" />
+	<input type="submit" value="Login with OpenId" />
+	</form>
+
 @using (Html.BeginForm()) {
     <div>
         <fieldset>

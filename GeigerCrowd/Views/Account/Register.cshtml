@@ -52,7 +52,10 @@
                 @Html.PasswordFor(m => m.ConfirmPassword)
                 @Html.ValidationMessageFor(m => m.ConfirmPassword)
             </div>
-
+              <div class="editor-field">
+                @Html.Label("OpenId URL (Optional)")<br />
+                <input type="text" name="OpenID" columnwidth="100" value="@Session["ClaimedIdentifier"]" />
+            </div>
             <p>
                 <input type="submit" value="Register" />
             </p>

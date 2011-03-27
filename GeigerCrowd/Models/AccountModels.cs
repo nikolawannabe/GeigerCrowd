@@ -34,17 +34,18 @@ namespace GeigerCrowd.Models
 
     public class LogOnModel
     {
-        [Required]
         [Display(Name = "User name")]
         public string UserName { get; set; }
 
-        [Required]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
 
         [Display(Name = "Remember me?")]
         public bool RememberMe { get; set; }
+
+        [Display(Name = "OpenID")]
+        public string OpenID { get; set; }
     }
 
 
@@ -69,6 +70,9 @@ namespace GeigerCrowd.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Display(Name = "OpenID URL")]
+        public string OpenID { get; set; }
     }
     #endregion
 
@@ -84,11 +88,17 @@ namespace GeigerCrowd.Models
 
         bool ValidateUser(string userName, string password);
         MembershipCreateStatus CreateUser(string userName, string password, string email);
+        MembershipCreateStatus CreateUser(string userName, string password, string email,string openid);
         bool ChangePassword(string userName, string oldPassword, string newPassword);
+        string GetUserName(string openidurl);
+        bool AttachOpenID(string openid, string userName);
+        List<string> GetOpenIdUrls(string userid);
     }
 
     public class AccountMembershipService : IMembershipService
     {
+
+        private GeigerCrowdContext context = new GeigerCrowdContext();
         private readonly MembershipProvider _provider;
 
         public AccountMembershipService()
@@ -117,6 +127,21 @@ namespace GeigerCrowd.Models
             return _provider.ValidateUser(userName, password);
         }
 
+        public MembershipCreateStatus CreateUser(string userName, string password, string email,string openid)
+        {
+            if (String.IsNullOrEmpty(userName)) throw new ArgumentException("Value cannot be null or empty.", "userName");
+            if (String.IsNullOrEmpty(password)) throw new ArgumentException("Value cannot be null or empty.", "password");
+            if (String.IsNullOrEmpty(email)) throw new ArgumentException("Value cannot be null or empty.", "email");
+
+            MembershipCreateStatus status;
+            _provider.CreateUser(userName, password, email, null, null, true, null, out status);
+            if ((!(String.IsNullOrEmpty(openid))) && (status == MembershipCreateStatus.Success))
+            {
+                AttachOpenID(openid,userName);
+            }
+            return status;
+        }
+
         public MembershipCreateStatus CreateUser(string userName, string password, string email)
         {
             if (String.IsNullOrEmpty(userName)) throw new ArgumentException("Value cannot be null or empty.", "userName");
@@ -126,6 +151,50 @@ namespace GeigerCrowd.Models
             MembershipCreateStatus status;
             _provider.CreateUser(userName, password, email, null, null, true, null, out status);
             return status;
+        }
+
+        public bool AttachOpenID(string openid, string userName)
+        {
+           MembershipUser user = _provider.GetUser(userName,false);
+           string sid = user.ProviderUserKey.ToString();
+           List<System.Guid> userids = context.Database.SqlQuery<System.Guid>("select UserId from [dbo].openid where openid_url={0} and UserId={1}", openid, sid).ToList<System.Guid>();
+           if (userids.Count == 0)
+           {
+               try
+               {
+                   context.Database.ExecuteSqlCommand("insert into [dbo].openid (openid_url,UserId) values ({0},{1})", openid, sid);
+               }
+               catch (Exception)
+               {
+                   return false;
+               }
+               return true;
+           }
+           else
+           {
+               return false;
+           }
+        }
+
+        public string GetUserName(string openidurl)
+        {
+            List<System.Guid> userids = context.Database.SqlQuery<System.Guid>("select UserId from [dbo].openid where openid_url = {0} ", openidurl).ToList<System.Guid>();
+            if (userids.Count == 0)
+                return "";
+            else
+            {
+                Object un = userids.First();
+                MembershipUser user = _provider.GetUser(un, false);
+                return user.UserName;
+            }
+        }
+        public List<string> GetOpenIdUrls(string username)
+        {
+            Object un = username;
+            MembershipUser user = _provider.GetUser(username, false);
+            string userid = user.ProviderUserKey.ToString();
+            List<string> urls = context.Database.SqlQuery<string>("select openid_url from [dbo].openid where CONVERT(VARCHAR(255), UserId) = {0}", userid).ToList<string>();
+            return urls;
         }
 
         public bool ChangePassword(string userName, string oldPassword, string newPassword)
