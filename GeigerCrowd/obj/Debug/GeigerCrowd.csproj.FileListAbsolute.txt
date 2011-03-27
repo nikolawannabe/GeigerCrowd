@@ -6,6 +6,3 @@ C:\Users\nikkie\documents\visual studio 2010\Projects\GeigerCrowd\GeigerCrowd\ob
 C:\Users\nikkie\documents\visual studio 2010\Projects\GeigerCrowd\GeigerCrowd\obj\Debug\GeigerCrowd.pdb
 C:\Users\nikkie\documents\visual studio 2010\Projects\GeigerCrowd\GeigerCrowd\bin\EntityFramework.xml
 C:\Users\nikkie\Documents\Visual Studio 2010\Projects\GeigerCrowd\GeigerCrowd\bin\DotNetOpenAuth.dll
-C:\Users\nikkie\Documents\Visual Studio 2010\Projects\GeigerCrowd\GeigerCrowd\bin\DotNetOpenAuth.pdb
-C:\Users\nikkie\Documents\Visual Studio 2010\Projects\GeigerCrowd\GeigerCrowd\bin\DotNetOpenAuth.xml
-C:\Users\nikkie\Documents\Visual Studio 2010\Projects\GeigerCrowd\GeigerCrowd\bin\sr\DotNetOpenAuth.resources.dll
